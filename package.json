@@ -9,7 +9,10 @@
     "build": "electron-builder -m -w -l --publish never",
     "build:mac": "electron-builder -m --publish never",
     "build:win": "electron-builder -w --publish never",
-    "build:linux": "electron-builder -l --publish never"
+    "build:linux": "electron-builder -l --publish never",
+    "release:mac": "electron-builder -m --publish always",
+    "release:win": "electron-builder -w --publish always",
+    "release:linux": "electron-builder -l --publish always"
   },
   "author": "Enzo",
   "license": "BSD-2-Clause",
@@ -23,7 +26,11 @@
   "build": {
     "appId": "ch.officeworks.steamtierlist",
     "productName": "Steam Tierlist",
-    "publish": null,
+    "publish": {
+      "provider": "github",
+      "owner": "qcom-toolbox",
+      "repo": "HM"
+    },
     "directories": {
       "output": "dist"
     },

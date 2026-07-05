@@ -1,18 +1,16 @@
-name: Build
+name: Release
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
+    tags:
+      - 'v*'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  build:
-    name: Build (${{ matrix.platform }})
+  release:
+    name: Release (${{ matrix.platform }})
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -21,13 +19,13 @@ jobs:
         include:
           - os: ubuntu-latest
             platform: linux
-            build-script: build:linux
+            release-script: release:linux
           - os: windows-latest
             platform: windows
-            build-script: build:win
+            release-script: release:win
           - os: macos-latest
             platform: macos
-            build-script: build:mac
+            release-script: release:mac
 
     steps:
       - name: Checkout
@@ -42,15 +40,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Electron app
-        run: npm run ${{ matrix.build-script }}
+      - name: Build and publish to GitHub Releases
+        run: npm run ${{ matrix.release-script }}
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: false
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: steam-tierlist-${{ matrix.platform }}
-          path: dist/**
-          if-no-files-found: error
-          retention-days: 14
