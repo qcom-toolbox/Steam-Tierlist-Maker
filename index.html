@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Steam Tierlist</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">▮▮</span>
+      <span class="brand-name">Steam Tierlist</span>
+    </div>
+    <div class="topbar-actions">
+      <input id="search" type="text" placeholder="Search for a game…" />
+      <button id="btn-refresh" class="btn" title="Reload library from Steam">Refresh</button>
+      <button id="btn-export" class="btn btn-accent" title="Export tier list as an image">Export PNG</button>
+      <button id="btn-settings" class="btn btn-ghost" title="Settings">⚙</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <section id="tierlist" class="tierlist"></section>
+
+    <div class="tierlist-controls">
+      <button id="btn-add-tier" class="btn btn-ghost">+ Add tier</button>
+    </div>
+
+    <section class="pool-section">
+      <div class="pool-header">
+        <h2>Unranked <span id="pool-count" class="count-badge"></span></h2>
+      </div>
+      <div id="pool" class="pool"></div>
+    </section>
+  </main>
+
+  <div id="empty-state" class="empty-state hidden">
+    <h1>Your Steam library, as a tier list.</h1>
+    <p>Connect your Steam account to import your games and drag their icons into tiers.</p>
+    <button id="btn-connect" class="btn btn-accent btn-lg">Connect Steam</button>
+  </div>
+
+  <!-- Settings modal -->
+  <div id="modal-settings" class="modal hidden">
+    <div class="modal-box">
+      <h2>Steam connection</h2>
+      <p class="modal-hint">
+        API key: <a href="#" id="link-apikey">steamcommunity.com/dev/apikey</a><br/>
+        SteamID64 or username (vanity URL): find it at <a href="#" id="link-steamid">steamid.io</a>
+      </p>
+      <label>Steam API key</label>
+      <input id="input-apikey" type="text" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+      <label>SteamID64 or username</label>
+      <input id="input-steamid" type="text" placeholder="76561198000000000 or myusername" />
+      <p class="modal-note">⚠ Your Steam profile and game details must be public (Steam privacy settings) for the import to work.</p>
+      <div class="modal-actions">
+        <button id="btn-cancel-settings" class="btn btn-ghost">Cancel</button>
+        <button id="btn-save-settings" class="btn btn-accent">Save and import</button>
+      </div>
+      <p id="settings-error" class="error hidden"></p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+    <p id="loading-text">Importing library…</p>
+  </div>
+
+  <script src="./node_modules/html2canvas/dist/html2canvas.min.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>

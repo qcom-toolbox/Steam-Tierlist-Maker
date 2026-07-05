@@ -1,0 +1,64 @@
+{
+  "name": "steam-tierlist",
+  "productName": "Steam Tierlist",
+  "version": "1.0.0",
+  "description": "Build a tier list of your Steam library with game icons.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder -w -l",
+    "build:win": "electron-builder -w",
+    "build:linux": "electron-builder -l"
+  },
+  "author": "Enzo",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
+  },
+  "build": {
+    "appId": "ch.officeworks.steamtierlist",
+    "productName": "Steam Tierlist",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "renderer.js",
+      "style.css",
+      "node_modules/html2canvas/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "category": "Game"
+    }
+  }
+}
