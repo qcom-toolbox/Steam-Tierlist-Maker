@@ -29,7 +29,7 @@
     "publish": {
       "provider": "github",
       "owner": "qcom-toolbox",
-      "repo": "HM"
+      "repo": "Steam-Tierlist-Maker"
     },
     "directories": {
       "output": "dist"
