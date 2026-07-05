@@ -6,13 +6,13 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder -m -w -l",
-    "build:mac": "electron-builder -m",
-    "build:win": "electron-builder -w",
-    "build:linux": "electron-builder -l"
+    "build": "electron-builder -m -w -l --publish never",
+    "build:mac": "electron-builder -m --publish never",
+    "build:win": "electron-builder -w --publish never",
+    "build:linux": "electron-builder -l --publish never"
   },
   "author": "Enzo",
-  "license": "MIT",
+  "license": "BSD-2-Clause",
   "devDependencies": {
     "electron": "^31.7.7",
     "electron-builder": "^24.13.3"
@@ -23,6 +23,7 @@
   "build": {
     "appId": "ch.officeworks.steamtierlist",
     "productName": "Steam Tierlist",
+    "publish": null,
     "directories": {
       "output": "dist"
     },
@@ -32,6 +33,8 @@
       "index.html",
       "renderer.js",
       "style.css",
+      "LICENSE",
+      "THIRD-PARTY-LICENSES.md",
       "node_modules/html2canvas/**/*"
     ],
     "win": {

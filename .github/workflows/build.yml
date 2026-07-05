@@ -46,7 +46,6 @@ jobs:
       - name: Build Electron app
         run: npm run ${{ matrix.build-script }}
         env:
-          # Skip code signing in CI (unsigned builds are fine for GitHub releases)
           CSC_IDENTITY_AUTO_DISCOVERY: false
 
       - name: Upload artifacts
