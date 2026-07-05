@@ -6,7 +6,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder -w -l",
+    "build": "electron-builder -m -w -l",
+    "build:mac": "electron-builder -m",
     "build:win": "electron-builder -w",
     "build:linux": "electron-builder -l"
   },
@@ -59,6 +60,25 @@
         }
       ],
       "category": "Game"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.games"
     }
   }
 }
