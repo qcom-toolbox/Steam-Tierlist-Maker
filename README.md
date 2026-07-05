@@ -1,10 +1,6 @@
 # Steam Tierlist
 
-Electron app (Windows + Linux) that imports your Steam library and lets you build a drag-and-drop tier list with each game's icon, exportable as PNG.
-
-## ⚠️ Note on "SteamDB"
-
-SteamDB has no public API for fetching a personal library. This app uses the **official Steam Web API** (`IPlayerService/GetOwnedGames`), which is the legitimate source for this — same result, better supported. You just need:
+Electron app that imports your Steam library and lets you build a drag-and-drop tier list with each game's icon, exportable as PNG.
 
 1. A Steam API key (free): https://steamcommunity.com/dev/apikey
 2. Your **SteamID64** or username (vanity URL), available at https://steamid.io/
@@ -18,19 +14,6 @@ Icons are loaded directly from the Steam CDN (`capsule_184x69.jpg` per `appid`),
 npm install
 npm start
 ```
-
-## Building executables
-
-```bash
-# Both platforms at once (requires wine on Linux for the Windows build)
-npm run build
-
-# Single OS
-npm run build:linux   # -> dist/*.AppImage
-npm run build:win     # -> dist/*.exe (portable + NSIS installer)
-```
-
-On Gentoo, building the `.exe` from Linux requires `wine` (`app-emulation/wine-*`). Otherwise, build the AppImage locally and run the Windows build on a Windows machine (or CI).
 
 ## Usage
 
