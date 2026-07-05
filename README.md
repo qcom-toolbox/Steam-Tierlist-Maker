@@ -2,6 +2,11 @@
 
 Electron app that imports your Steam library and lets you build a drag-and-drop tier list with each game's icon, exportable as PNG.
 
+## Run On Mac :
+```
+- xattr -dr com.apple.quarantine /Applications/Steam\ Tierlist.app
+```
+
 1. A Steam API key (free): https://steamcommunity.com/dev/apikey
 2. Your **SteamID64** or username (vanity URL), available at https://steamid.io/
 3. Your Steam profile + game details set to **public** (Steam → Settings → Privacy), otherwise the API returns an empty list.
